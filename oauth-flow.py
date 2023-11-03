@@ -14,7 +14,7 @@
 from flask import Flask, request, render_template
 from square.client import Client
 from dotenv import load_dotenv
-from .db import log_merchant_info
+from db import log_merchant_info
 import os
 
 
@@ -97,7 +97,7 @@ def callback():
         </div>
       </div>
       """.format(response.body['access_token'], response.body['expires_at'], response.body['refresh_token'], response.body['merchant_id'])
-            log_merchant_info(response)
+            log_merchant_info.log_merchant_info(response)
 
             return render_template("base.html", content=content)
         # The response from the Obtain Token endpoint did not include an access token. Something went wrong.
