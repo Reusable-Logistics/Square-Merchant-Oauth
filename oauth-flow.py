@@ -123,3 +123,22 @@ def callback():
       </div>
     </div>"""
         return render_template("base.html", content=content)
+
+
+@app.route('/webhook', methods=['POST'])
+def webhook_listener():
+    data = request.json
+
+    # Process the webhook data here
+    # You can perform actions based on the data received
+
+    # For example, print the received data
+    print("Received webhook data:")
+    print(data)
+
+    # You can send a response back to the webhook sender if needed
+    # return "Webhook received successfully", 200
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
